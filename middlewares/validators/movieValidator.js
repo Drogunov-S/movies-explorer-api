@@ -13,7 +13,7 @@ module.exports.validateCreateMovie = celebrate({
     country: Joi.string().required(),
     director: Joi.string().required(),
     duration: Joi.number().required(),
-    description: Joi.number().required(),
+    description: Joi.string().required(),
     year: Joi.string().required(),
     image: Joi.string().pattern(regex).required(),
     trailerLink: Joi.string().pattern(regex).required(),

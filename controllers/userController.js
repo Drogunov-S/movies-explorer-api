@@ -70,7 +70,9 @@ const updateUser = (req, res, next, userData) => {
   User.findByIdAndUpdate(_id, userData, { new: true, runValidators: true })
     .then((updatedUser) => res.send(updatedUser))
     .catch((err) => {
-      if (err.name === ERROR_VALIDATION) {
+      if (err.code === ERROR_CODE_11000) {
+        next(new RegEmailException(ERROR_CODE_409_MESSAGE_RU));
+      } else if (err.name === ERROR_VALIDATION) {
         next(new DataException(err.message));
       } else {
         next(err);
@@ -78,9 +80,14 @@ const updateUser = (req, res, next, userData) => {
     });
 };
 
+const updateUserWithParam = (req, res, next) => {
+  const { name, email } = req.body;
+  updateUser(req, res, next, { name, email });
+};
+
 module.exports = {
   login,
   createUser,
   getAboutMe,
-  updateUser,
+  updateUserWithParam,
 };
