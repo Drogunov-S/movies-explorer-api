@@ -13,8 +13,8 @@ const DataException = require('../exceptions/dataException');
 const NotAccessException = require('../exceptions/notAccessException');
 
 const getMovies = (req, res, next) => {
-  Movie.find({})
-    .populate([MOVIE_OWNER])
+  const { _id } = req.user;
+  Movie.find({ owner: _id })
     .then((movies) => res.send(movies))
     .catch(next);
 };

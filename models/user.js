@@ -13,6 +13,7 @@ const AuthException = require('../exceptions/authException');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
+    required: true,
     minLength: [2, ERR_MESSAGE_MIN_VALID_USER_NAME_RU],
     maxLength: [30, ERR_MESSAGE_MAX_VALID_USER_NAME_RU],
   },
