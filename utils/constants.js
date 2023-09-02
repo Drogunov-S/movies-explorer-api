@@ -5,10 +5,15 @@
 module.exports.ROUTE_PATH_ALL = '/*';
 module.exports.ROUTE_PATH_LOGIN = '/signin';
 module.exports.ROUTE_PATH_REGISTER = '/signup';
-
+/**
+ * path: '/users/me'
+ * */
 module.exports.ROUTE_PATH_USER_ME = '/users/me';
 
 module.exports.ROUTE_PATH_MOVIES = '/movies';
+/**
+ * path: '/movies/:id'
+ * */
 module.exports.ROUTE_PATH_MOVIES_ID = '/movies/:id';
 
 // Коды ошибок
@@ -40,7 +45,8 @@ module.exports.MESSAGE_MOVIE_DELETE_RU = 'Фильм удален из избр�
 // Текст сообщений ошибок
 module.exports.ERR_MESSAGE_USER_BAD_EMAIL = 'Данный email невозможно использовать';
 module.exports.ERR_MESSAGE_MOVIE_DELETE_OTHER = 'Нельзя удалить фильм других пользователей';
-module.exports.ERROR_CODE_409_MESSAGE_RU = 'Регистрация с данным email невозможна';
+module.exports.ERROR_CODE_409_REG_MESSAGE_RU = 'Регистрация с данным email невозможна';
+module.exports.ERROR_CODE_409_UPD_MESSAGE_RU = 'Пользователь с таким email уже существует.';
 
 module.exports.ERR_MESSAGE_SERVER_ERROR_RU = 'Ошибка на сервере';
 module.exports.ERR_MESSAGE_NO_AUTH_RU = 'Необходимо авторизоваться';

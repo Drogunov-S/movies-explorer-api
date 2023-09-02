@@ -6,7 +6,8 @@ const {
   ERR_MESSAGE_FORBIDDEN_ELEMENT_ID,
   USER_RU,
   ERROR_VALIDATION,
-  ERROR_CODE_409_MESSAGE_RU,
+  ERROR_CODE_409_REG_MESSAGE_RU,
+  ERROR_CODE_409_UPD_MESSAGE_RU,
   ERROR_CODE_11000,
 } = require('../utils/constants');
 const RegEmailException = require('../exceptions/regEmailException');
@@ -56,7 +57,7 @@ const createUser = (req, res, next) => {
     .then((user) => res.status(CODE_201).send(user.toJSON()))
     .catch((err) => {
       if (err.code === ERROR_CODE_11000) {
-        next(new RegEmailException(ERROR_CODE_409_MESSAGE_RU));
+        next(new RegEmailException(ERROR_CODE_409_REG_MESSAGE_RU));
       } else if (err.name === ERROR_VALIDATION) {
         next(new DataException(err.message));
       } else {
@@ -71,7 +72,7 @@ const updateUser = (req, res, next, userData) => {
     .then((updatedUser) => res.send(updatedUser))
     .catch((err) => {
       if (err.code === ERROR_CODE_11000) {
-        next(new RegEmailException(ERROR_CODE_409_MESSAGE_RU));
+        next(new RegEmailException(ERROR_CODE_409_UPD_MESSAGE_RU));
       } else if (err.name === ERROR_VALIDATION) {
         next(new DataException(err.message));
       } else {
